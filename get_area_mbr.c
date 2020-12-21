@@ -44,8 +44,8 @@
 uint8_t get_area_mbr (const char *path, int32_t *polygon_count, double *polygon_x, double *polygon_y, NV_F64_XYMBR *mbr)
 {
   char                    string[256], tmp[256], lat_hemi, lon_hemi;
-  FILE                    *area_fp;
-  int32_t                 i, lat_deg, lat_min, lon_deg, lon_min, numShapes, type;
+  FILE                    *area_fp = NULL;
+  int32_t                 i, k, j, lat_deg, lat_min, lon_deg, lon_min, numShapes, type;
   float                   lat_sec, lon_sec;
   double                  minBounds[4], maxBounds[4];
   uint8_t                 west = NVFalse, east = NVFalse;
@@ -145,7 +145,7 @@ uint8_t get_area_mbr (const char *path, int32_t *polygon_count, double *polygon_
 
           //  Read all shapes
 
-          for (int32_t k = 0 ; k < numShapes ; k++)
+          for (k = 0 ; k < numShapes ; k++)
             {
               shape = SHPReadObject (shpHandle, k);
 
@@ -156,7 +156,7 @@ uint8_t get_area_mbr (const char *path, int32_t *polygon_count, double *polygon_
                 {
                   (*polygon_count) = 0;
 
-                  for (int32_t j = 0 ; j < shape->nVertices ; j++)
+                  for (j = 0 ; j < shape->nVertices ; j++)
                     {
                       polygon_y[*polygon_count] = shape->padfY[j];
                       polygon_x[*polygon_count] = shape->padfX[j];
@@ -232,8 +232,8 @@ uint8_t get_area_mbr (const char *path, int32_t *polygon_count, double *polygon_
 uint8_t get_area_mbr2 (const char *path, int32_t *polygon_count, NV_F64_COORD2 *polygon, NV_F64_XYMBR *mbr)
 {
   char                    string[256], tmp[256], lat_hemi, lon_hemi;
-  FILE                    *area_fp;
-  int32_t                 i, lat_deg, lat_min, lon_deg, lon_min, numShapes, type;
+  FILE                    *area_fp = NULL;
+  int32_t                 i, k, j, lat_deg, lat_min, lon_deg, lon_min, numShapes, type;
   float                   lat_sec, lon_sec;
   double                  minBounds[4], maxBounds[4];;
   uint8_t                 west = NVFalse, east = NVFalse;
@@ -328,7 +328,7 @@ uint8_t get_area_mbr2 (const char *path, int32_t *polygon_count, NV_F64_COORD2 *
 
           //  Read all shapes
 
-          for (int32_t k = 0 ; k < numShapes ; k++)
+          for (k = 0 ; k < numShapes ; k++)
             {
               shape = SHPReadObject (shpHandle, k);
 
@@ -339,7 +339,7 @@ uint8_t get_area_mbr2 (const char *path, int32_t *polygon_count, NV_F64_COORD2 *
                 {
                   (*polygon_count) = 0;
 
-                  for (int32_t j = 0 ; j < shape->nVertices ; j++)
+                  for (j = 0 ; j < shape->nVertices ; j++)
                     {
                       polygon[*polygon_count].y = shape->padfY[j];
                       polygon[*polygon_count].x = shape->padfX[j];

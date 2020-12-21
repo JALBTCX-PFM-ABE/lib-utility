@@ -49,7 +49,6 @@
 #include "changeFileRegisterABE.hpp"
 #include "clickLabel.hpp"
 #include "cosang.hpp"
-#include "getSystemInfo.hpp"
 #include "globals.hpp"
 #include "interp.hpp"
 #include "interpolate.hpp"

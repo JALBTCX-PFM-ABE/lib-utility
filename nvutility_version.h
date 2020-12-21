@@ -37,7 +37,7 @@
 
 #ifndef NVUTILITY_VERSION
 
-#define     NVUTILITY_VERSION     "PFM Software - nvutility library V2.2.43 - 08/07/19"
+#define     NVUTILITY_VERSION     "PFM Software - nvutility library V2.2.44 - 01/22/20"
 
 #endif
 
@@ -978,5 +978,14 @@
     Jan Depner (PFM Software)
 
     - Added SHAPE file support to get_area_mbr.c
+
+
+    Version 2.2.44
+    Jan C. Depner
+    01/22/20
+
+    - Removed getSystemInfo.cpp and .hpp because they were not being used and they caused compiler warnings.
+    - Defined a couple of integer variables in get_area_mbr.c because they were causing errors when not using
+      the c99 option to the compiler.
 
 </pre>*/
